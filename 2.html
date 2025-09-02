@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .blog-post {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .blog-title {
+            font-size: 24px;
+        }
+        .blog-content {
+            font-size: 16px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+    </header>
+    <div class="container">
+        <h2>Create a New Blog Post</h2>
+        <textarea id="blog-content" placeholder="Write your blog post here..."></textarea>
+        <button id="submit-button">Submit</button>
+
+        <h2>Recent Blog Posts</h2>
+        <div id="blog-posts"></div>
+    </div>
+
+    <script>
+        const submitButton = document.getElementById('submit-button');
+        const blogContent = document.getElementById('blog-content');
+        const blogPosts = document.getElementById('blog-posts');
+
+        submitButton.addEventListener('click', () => {
+            const content = blogContent.value;
+            if (content.trim() !== '') {
+                const blogPost = document.createElement('div');
+                blogPost.classList.add('blog-post');
+                blogPost.innerHTML = `
+                    <h3 class="blog-title">New Blog Post</h3>
+                    <p class="blog-content">${content}</p>
+                `;
+                blogPosts.appendChild(blogPost);
+                blogContent.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
